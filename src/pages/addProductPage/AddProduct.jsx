@@ -54,7 +54,7 @@ const AddProduct = () => {
       },
       body: JSON.stringify(productData),
     })
-        .then((res) => res.json())
+      .then((res) => res.json())
       .then((data) => console.log(data));
   };
 
@@ -186,7 +186,7 @@ const AddProduct = () => {
               name="image1"
               id="img1"
               onChange={handleImgSubmit}
-              accept="image/png"
+              accept="image/png/webp"
             />
           </label>
           <label
@@ -215,7 +215,7 @@ const AddProduct = () => {
               name="image2"
               id="img2"
               onChange={handleImgSubmit}
-              accept="image/png"
+              accept="image/png/webp"
             />
           </label>
           <label
@@ -244,7 +244,7 @@ const AddProduct = () => {
               name="image3"
               id="img3"
               onChange={handleImgSubmit}
-              accept="image/png"
+              accept="image/png/webp"
             />
           </label>
         </form>
