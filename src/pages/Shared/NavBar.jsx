@@ -13,7 +13,7 @@ const NavBar = () => {
         <label className="" htmlFor="search">
           <input type="text" name="search" id="search" />
         </label>
-        <div>cart</div>
+        <div></div>
         <button className="bg-green-600 px-6 py-3 rounded text-white">
           sign in
         </button>

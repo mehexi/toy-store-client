@@ -23,6 +23,8 @@ const AddProduct = () => {
     const reader = new FileReader();
     console.log(img);
 
+    const sellerName = document.getElementById("sellerName").value;
+    const sellerEmail = document.getElementById("sellerEmail").value;
     const productName = document.getElementById("productName").value;
     const productPrice = document.getElementById("productPrice").value;
     const productDescription =
@@ -34,6 +36,8 @@ const AddProduct = () => {
     const date = document.getElementById("date").value;
 
     const productData = {
+      sellerName: sellerName,
+      sellerEmail: sellerEmail,
       productName: productName,
       price: parseFloat(productPrice),
       description: productDescription,
@@ -59,8 +63,33 @@ const AddProduct = () => {
   };
 
   return (
-    <section className="w-9/12 mx-auto grid border grid-cols-2 gap-6 bg-gray-100 p-6">
+    <section className="w-9/12 mx-auto grid border grid-cols-2 gap-6 bg-gray-100 p-6 mt-10">
       <div className="border p-6 flex flex-col gap-6 bg-white">
+        <h1 className="text-2xl capitalize font-semibold">
+          Seller Information
+        </h1>
+        <form className="flex flex-col gap-3 border p-3 rounded" action="">
+          <label className="flex flex-col gap-3" htmlFor="sellerName">
+            <h1>Seller Name</h1>
+            <input
+              className="px-6 py-3 border rounded-lg"
+              type="text"
+              id="sellerName"
+            />
+          </label>
+          <label
+            className="flex flex-col gap-3 capitalize"
+            htmlFor="sellerEmail"
+          >
+            <h1>seller email</h1>
+            <input
+              className="px-6 py-3 border rounded-lg resize-y w-full"
+              rows={4}
+              type="email"
+              id="sellerEmail"
+            />
+          </label>
+        </form>
         <h1 className="text-2xl capitalize font-semibold">Description</h1>
         <form className="flex flex-col gap-3 border p-3 rounded" action="">
           <label className="flex flex-col gap-3" htmlFor="productName">

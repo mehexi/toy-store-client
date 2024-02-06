@@ -1,28 +1,64 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import Catagory from "./Catagory";
+import Pagination from "../Shared/Pagination";
 
 const ShopSection = () => {
   const [productData, setProductData] = useState([]);
+  //pegignation
+  const [currentPage, setCurrentPage] = useState(0);
+  const [prePageItem, setPerPageItem] = useState(5);
+  const [productCount, setProductCount] = useState(0);
+  const [queryString, setQureystring] = useState();
+  const pageShowNumber = [5, 10, 15];
+
+  useEffect(() => {
+    fetch("http://localhost:5000/count")
+      .then((res) => res.json())
+      .then((data) => setProductCount(data.productCount));
+  }, []);
+
+  const numberOfPages = Math.ceil(productCount / prePageItem);
+  const pages = [...Array(numberOfPages).keys()];
+  console.log(pages);
+
+  const handlePerPageItem = (e) => {
+    setPerPageItem(e.target.value);
+    // console.log(e.target.value);
+  };
 
   const fetchData = (selectedFilters) => {
-    console.log(selectedFilters);
     const queryString = new URLSearchParams(selectedFilters).toString();
+    setQureystring(queryString);
     console.log(queryString);
-    fetch(`http://localhost:5000/products?${queryString}`)
+  };
+
+  const paginationParams = new URLSearchParams({
+    page: currentPage,
+    size: prePageItem,
+  }).toString();
+
+  console.log(paginationParams);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/products?${queryString}&${paginationParams}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setProductData(data);
       });
-  };
+  }, [currentPage, prePageItem, queryString]);
 
   return (
     <section className="w-9/12 flex flex-col mt-[50px] mx-auto">
       <div className="flex justify-between items-center">
         <h1>Showing {productData?.length} products</h1>
-        <div className="px-6 py-3 border rounded-full">
-          <h1>sort by : recomended</h1>
+        <div className="px-6 py-3 border rounded-full flex gap-3">
+          <h1>number of item</h1>
+          <select onChange={handlePerPageItem} name="itemCount" id="">
+            {pageShowNumber.map((page) => (
+              <option key={page}> {page} </option>
+            ))}
+          </select>
         </div>
       </div>
       {/* card section */}
@@ -36,6 +72,8 @@ const ShopSection = () => {
           ))}
         </div>
       </div>
+      {/* pagination section */}
+      <Pagination setCurrentPage={setCurrentPage} pages={pages} />
     </section>
   );
 };

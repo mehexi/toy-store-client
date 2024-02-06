@@ -93,13 +93,13 @@ const Catagory = ({ fetchData }) => {
             </div>
             <h1>22</h1>
           </label>
-          <label htmlFor="starWars" className="flex justify-between text-lg">
+          <label htmlFor="star-wars" className="flex justify-between text-lg">
             <div className="flex gap-3">
               <input
                 type="radio"
                 onChange={handleCheckboxChange}
                 name="franchise"
-                id="starWars"
+                id="star-wars"
               />
               <label htmlFor="starWars">Star Wars</label>
             </div>
