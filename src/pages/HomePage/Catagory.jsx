@@ -40,12 +40,12 @@ const Catagory = ({ fetchData }) => {
   }, [selectedFilters]);
 
   const handleCheckboxChange = (e) => {
-    console.log(e);
+    // console.log(e);
     const seleted = e.target.checked;
     const category = e.target.name;
     const value = e.target.id;
 
-    console.log(category, value, seleted);
+    // console.log(category, value, seleted);
     if (seleted) {
       setSelectedFilters((prevFilters) => ({
         ...prevFilters,

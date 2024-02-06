@@ -6,7 +6,7 @@ const Pagination = ({ pages, setCurrentPage }) => {
   };
 
   return (
-    <div className="mb-10 flex justify-center gap-6">
+    <div className="mb-10 flex  justify-center gap-6">
       {pages.map((page) => (
         <button
           onClick={() => handleCurrentPage(page)}

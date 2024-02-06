@@ -155,7 +155,7 @@ const AddProduct = () => {
                 Action Figures
               </option>
               <option value="plush-toys" className="py-2">
-                Plush Toys
+                Plush Toys  
               </option>
               <option value="building-sets" className="py-2">
                 Building Sets
